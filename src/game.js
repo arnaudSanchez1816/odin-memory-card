@@ -1,5 +1,5 @@
 import { getChampionImageName, getRandomChampions } from "./database"
-import { randomRange } from "./utils"
+import { randomRange, shuffle } from "./utils"
 
 export function createGame(nbChampions) {
     const champions = getRandomChampions(nbChampions)
@@ -56,7 +56,7 @@ export function createGame(nbChampions) {
             }
         }
 
-        return champsToDisplay
+        return shuffle(champsToDisplay)
     }
 
     return {

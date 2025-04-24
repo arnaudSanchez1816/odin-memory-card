@@ -26,3 +26,16 @@ export function sleep(ms) {
 export function randomRange(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min
 }
+
+export function shuffle(array) {
+    const shuffledArray = [...array]
+
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1))
+        let k = shuffledArray[i]
+        shuffledArray[i] = shuffledArray[j]
+        shuffledArray[j] = k
+    }
+
+    return shuffledArray
+}
