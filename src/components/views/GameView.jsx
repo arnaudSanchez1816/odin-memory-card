@@ -1,26 +1,47 @@
-import { getChampionImageName, getRandomChampions } from "../../database"
+import { useEffect, useMemo, useState } from "react"
+import { createGame } from "../../game"
 import "../../styles/GameView.css"
 import ChampionCard from "../ChampionCard"
+import { sleep } from "../../utils"
 
 function GameView() {
-    const randomChampions = getRandomChampions(6)
+    const [game, setGame] = useState(createGame(10))
+    const [flipped, setFlipped] = useState(true)
+
+    const championsToDisplay = useMemo(() => {
+        return game.getChampionsToDisplay(5)
+    }, [game])
+
+    useEffect(() => {
+        const flipCard = async () => {
+            await sleep(1000)
+            setFlipped(false)
+        }
+
+        flipCard()
+    }, [championsToDisplay])
+
+    const onCardClicked = async (id) => {
+        setFlipped(true)
+        await sleep(1000)
+        const remainingChamps = game.remainingValidChoices.filter(
+            (item) => id !== item
+        )
+        setGame({ ...game, remainingValidChoices: remainingChamps })
+    }
 
     return (
         <div className="game-view">
             <div className="cards-container">
-                {randomChampions.map((champion) => {
-                    const randomSkinIndex = Math.floor(
-                        Math.random() * champion.skins.length
-                    )
-                    const skinImageName = getChampionImageName(
-                        champion,
-                        randomSkinIndex
-                    )
+                {championsToDisplay.map((champion) => {
                     return (
                         <ChampionCard
-                            key={champion.key}
+                            key={champion.id}
+                            id={champion.id}
                             championName={champion.name}
-                            spriteName={skinImageName}
+                            spriteName={champion.image}
+                            isFlipped={flipped}
+                            onClicked={onCardClicked}
                         />
                     )
                 })}

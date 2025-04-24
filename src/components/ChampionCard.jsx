@@ -1,14 +1,12 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import "../styles/ChampionCard.css"
 import { clsx } from "clsx/lite"
 import { getChampionImagePath, lerp } from "../utils"
 import lolLogo from "/src/assets/lol-logo.png"
 
-function ChampionCard({ championName, spriteName }) {
+function ChampionCard({ id, championName, spriteName, isFlipped, onClicked }) {
     const name = championName
     const imageName = spriteName
-
-    const [flipped, setFlipped] = useState(false)
     const cardRef = useRef(null)
 
     useEffect(() => {
@@ -46,11 +44,10 @@ function ChampionCard({ championName, spriteName }) {
     return (
         <div
             className="champion-card"
-            data-hidden="false"
             ref={cardRef}
-            onClick={() => setFlipped(!flipped)}
+            onClick={() => onClicked(id)}
         >
-            <div className={clsx("card-flip-wrapper", flipped && "flipped")}>
+            <div className={clsx("card-flip-wrapper", isFlipped && "flipped")}>
                 <button className="face">
                     <picture>
                         <source

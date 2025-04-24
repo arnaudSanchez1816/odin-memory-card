@@ -18,3 +18,11 @@ export function inverseLerp(a, b, value) {
 export function range(x1, y1, x2, y2, a) {
     return lerp(x2, y2, inverseLerp(x1, y1, a))
 }
+
+export function sleep(ms) {
+    return new Promise((r) => setTimeout(r, ms))
+}
+
+export function randomRange(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min
+}
