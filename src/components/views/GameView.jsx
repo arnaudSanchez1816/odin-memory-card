@@ -1,11 +1,9 @@
 import { useEffect, useMemo, useState } from "react"
-import { createGame } from "../../game"
 import "../../styles/GameView.css"
 import ChampionCard from "../ChampionCard"
 import { sleep } from "../../utils"
 
-function GameView() {
-    const [game, setGame] = useState(createGame(10))
+function GameView({ game, setGame }) {
     const [flipped, setFlipped] = useState(true)
 
     const championsToDisplay = useMemo(() => {
