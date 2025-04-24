@@ -39,3 +39,13 @@ export function getRandomChampions(count) {
 
     return champions
 }
+
+export function getChampionImageName(champion, skinIndex) {
+    const skins = champion.skins
+
+    if (skinIndex < 0 || skinIndex >= skins.length) {
+        throw new Error("Index out of bound")
+    }
+
+    return `${champion.id}_${skins[skinIndex].num}.jpg`
+}

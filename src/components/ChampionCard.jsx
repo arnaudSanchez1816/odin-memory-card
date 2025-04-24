@@ -4,9 +4,9 @@ import { clsx } from "clsx/lite"
 import { getChampionImagePath, lerp } from "../utils"
 import lolLogo from "/src/assets/lol-logo.png"
 
-function ChampionCard() {
-    const name = "Aatrox"
-    const imageName = "Aatrox_0.jpg"
+function ChampionCard({ championName, spriteName }) {
+    const name = championName
+    const imageName = spriteName
 
     const [flipped, setFlipped] = useState(false)
     const cardRef = useRef(null)
