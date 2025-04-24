@@ -1,3 +1,7 @@
 #root {
     background-color: var(--color-hextech-black);
 }
+
+.app {
+    min-height: 100vh;
+}

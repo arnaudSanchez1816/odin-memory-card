@@ -1,0 +1,30 @@
+.game-view {
+    min-height: 100vh;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: auto;
+    grid-auto-rows: min-content;
+    justify-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 1rem;
+}
+
+@media (min-width: 600px) {
+    .cards-container {
+        grid-template-columns: repeat(auto-fit, 254px);
+    }
+}
+
+@media (min-width: 1100px) {
+    .cards-container {
+        align-items: center;
+        grid-template-columns: repeat(auto-fit, calc(308px / 1.5));
+    }
+}
