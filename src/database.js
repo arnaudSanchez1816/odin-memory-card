@@ -6,17 +6,26 @@ const championsDatabase = []
 export async function initializeDatabase() {
     const data = champions.data
     try {
+        const championFetchs = []
         for (const champion in data) {
-            const championData = data[champion]
-            const response = await fetch(
-                `data/champion/${championData.id}.json`
-            )
+            const loadChampionJson = async () => {
+                const championData = data[champion]
+                const response = await fetch(
+                    `data/champion/${championData.id}.json`
+                )
 
-            if (response.ok == false) {
-                throw new Error(response.status)
+                if (response.ok == false) {
+                    throw new Error(response.status)
+                }
+                const championJson = await response.json()
+                return championJson.data[champion]
             }
-            const championJson = await response.json()
-            championsDatabase.push(championJson.data[champion])
+            championFetchs.push(loadChampionJson())
+        }
+
+        const results = await Promise.all(championFetchs)
+        for (const fetchResult of results) {
+            championsDatabase.push(fetchResult)
         }
         databaseLoaded = true
     } catch (error) {
