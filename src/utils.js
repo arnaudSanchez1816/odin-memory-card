@@ -1,9 +1,9 @@
 export function getChampionImagePath(imageName, tileVersion = false) {
     if (tileVersion) {
-        return `/champions/tiles/${imageName}`
+        return `champions/tiles/${imageName}`
     }
 
-    return `/champions/${imageName}`
+    return `champions/${imageName}`
 }
 
 export function lerp(a, b, t) {
