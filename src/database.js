@@ -9,7 +9,7 @@ export async function initializeDatabase() {
         for (const champion in data) {
             const championData = data[champion]
             const response = await fetch(
-                `src/assets/data/champion/${championData.id}.json`
+                `data/champion/${championData.id}.json`
             )
 
             if (response.ok == false) {
