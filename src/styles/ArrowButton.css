@@ -1,0 +1,51 @@
+.arrow-button > .circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow-button > .logo {
+    width: 32px;
+    height: 32px;
+    z-index: 1;
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        width: 45px;
+        height: 45px;
+        background: no-repeat center/100%
+            url("/src/assets/lol-logo-simplified.png");
+        top: calc(calc(45px - 32px) / -2);
+        left: calc(calc(calc(45px - 32px) / -2) - 3px);
+    }
+}
+
+.arrow-button > button.main,
+.arrow-button > button.cancel {
+    cursor: var(--cursor-pointer);
+}
+
+@property --main-bg1 {
+    syntax: "<color>";
+    initial-value: #152932;
+    inherits: false;
+}
+
+@property --main-bg2 {
+    syntax: "<color>";
+    initial-value: #152932;
+    inherits: false;
+}
+
+.arrow-button > button.main::before {
+    background: linear-gradient(var(--main-bg1), var(--main-bg2)) !important;
+    transition:
+        --main-bg1 300ms,
+        --main-bg2 300ms;
+}
+
+.arrow-button > button.main:hover::before {
+    --main-bg2: #0d394a;
+}

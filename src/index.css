@@ -1,8 +1,66 @@
+@font-face {
+    font-family: "beaufort";
+    src: url("./assets/hextech-css/fonts/Beaufort-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "beaufort";
+    src: url("./assets/hextech-css/fonts/Beaufort-Italic.woff") format("woff");
+    font-weight: normal;
+    font-style: italic;
+}
+@font-face {
+    font-family: "beaufort";
+    src: url("./assets/hextech-css/fonts/Beaufort-Bold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: "spiegel";
+    src: url("./assets/hextech-css/fonts/Spiegel-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "beaufort";
+    src: url("./assets/hextech-css/fonts/Spiegel-Italic.woff") format("woff");
+    font-weight: normal;
+    font-style: italic;
+}
+
 :root {
     --color-hextech-black: rgb(1, 10, 19);
+    --color-gold-1: rgb(240, 230, 210);
     --color-gold-2: rgb(200, 170, 110);
+    --color-gold-5: rgb(120, 90, 40);
     --color-blue-7: rgb(10, 20, 40);
+    --color-grey-1: rgb(160, 155, 140);
     --color-grey-2: rgb(60, 60, 65);
 
-    --gradient-gold: linear-gradient(#785a28 50%, #c89b3c 50%);
+    --gradient-gold: linear-gradient(#785a28, #c89b3c);
+    --gradient-blue: linear-gradient(to top, #005a82, #0ac8b9);
+    --gradient-dark-blue: linear-gradient(to top, #091428, #0a1428);
+
+    --cursor-normal: url("/src/assets/lol-cursor.png"), auto;
+    --cursor-pointer: url("/src/assets/lol-cursor-pointer.png"), auto;
+
+    --serif-font: "beaufort", serif;
+    --serif-font-letter-spacing: 0.05em;
+    --sans-serif-font: "spiegel", sans-serif;
+}
+
+body {
+    font-family: var(--sans-serif-font);
+    color: var(--color-grey-1);
+    cursor: var(--cursor-normal);
+}
+
+button,
+a {
+    cursor: var(--cursor-pointer);
+}
+
+button.button {
+    cursor: var(--cursor-pointer) !important;
 }

@@ -1,14 +1,28 @@
 import { getChampionImageName, getRandomChampions } from "./database"
 import { randomRange, shuffle } from "./utils"
 
-export function createGame(nbChampions) {
+let gameIdCounter = 0
+
+const GAME_DEFAULT_OPTIONS = {
+    totalChampions: 10,
+    championsPerRound: 5,
+    useAlternateSkins: true,
+}
+
+export function createGame(options = GAME_DEFAULT_OPTIONS) {
+    options = { ...GAME_DEFAULT_OPTIONS, ...options }
+    const nbChampions = options.totalChampions
+
     const champions = getRandomChampions(nbChampions)
     const championsPool = []
     for (const champion of champions) {
         const randomSkinIndex = Math.floor(
             Math.random() * champion.skins.length
         )
-        const skinImageName = getChampionImageName(champion, randomSkinIndex)
+        const skinImageName = getChampionImageName(
+            champion,
+            options.useAlternateSkins ? randomSkinIndex : 0
+        )
         championsPool.push({
             id: champion.key,
             name: champion.name,
@@ -58,11 +72,14 @@ export function createGame(nbChampions) {
 
         return shuffle(champsToDisplay)
     }
+    gameIdCounter += 1
 
     return {
-        currentScore: 0,
+        id: gameIdCounter,
         championsPool: championsPool,
         remainingValidChoices: championsPool.map((c) => c.id),
+        gameOver: false,
         getChampionsToDisplay: getChampionsToDisplay,
+        options: options,
     }
 }

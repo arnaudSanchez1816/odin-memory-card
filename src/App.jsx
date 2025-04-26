@@ -4,6 +4,8 @@ import GameView from "./components/views/GameView"
 import { initializeDatabase } from "./database"
 import { sleep } from "./utils"
 import { createGame } from "./game"
+import StartView from "./components/views/StartView"
+import LoadingView from "./components/views/LoadingView"
 
 let loadPromise = null
 if (typeof window !== "undefined") {
@@ -19,30 +21,51 @@ function App() {
         async function loadingDatabase() {
             setLoading(true)
             await loadPromise
-            setGame(createGame(10))
             setLoading(false)
         }
 
         loadingDatabase()
     }, [])
 
+    const onGoHomeClicked = () => {
+        setGame(null)
+    }
+
+    const onNewGameClicked = () => {
+        setGame(createGame({ ...game.options }))
+    }
+
     if (loading) {
         return (
             <div className="app">
-                <div>Loading !</div>
+                <LoadingView />
             </div>
         )
     }
 
-    const gameOver = game.remainingValidChoices.length <= 0
+    const gameRunning = game != null
+    if (gameRunning == false) {
+        return (
+            <div className="app">
+                <StartView
+                    onGameStart={() => {
+                        setGame(createGame({ useAlternateSkins: false }))
+                    }}
+                />
+            </div>
+        )
+    }
 
     return (
         <>
             <div className="app">
-                {gameOver == false && (
-                    <GameView game={game} setGame={setGame} />
-                )}
-                {gameOver && <div>Game over !!</div>}
+                <GameView
+                    key={game.id}
+                    game={game}
+                    setGame={setGame}
+                    onGoHomeClicked={onGoHomeClicked}
+                    onNewGameClicked={onNewGameClicked}
+                />
             </div>
         </>
     )

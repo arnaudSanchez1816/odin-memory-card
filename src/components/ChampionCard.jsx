@@ -60,6 +60,7 @@ function ChampionCard({ id, championName, spriteName, isFlipped, onClicked }) {
                             alt="Champion image"
                         />
                     </picture>
+                    <div className="backdrop"></div>
                     <div className="champion-name">{name}</div>
                 </button>
                 <div className="back">
