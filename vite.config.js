@@ -5,7 +5,4 @@ import react from "@vitejs/plugin-react"
 export default defineConfig({
     plugins: [react()],
     base: "/odin-memory-card/",
-    build: {
-        assetsInlineLimit: 0,
-    },
 })
