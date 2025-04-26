@@ -1,16 +1,19 @@
-#root {
-    background-color: var(--color-hextech-black);
-}
-
 .app {
     min-height: 100vh;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+        "view"
+        "footer";
 }
 
 .view {
-    min-height: 100vh;
+    grid-area: view;
+    width: 100%;
     max-width: 75rem;
     margin: 0 auto;
-    padding: 2rem 2rem 5rem;
+    padding: 2rem 2rem 0;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto 2fr;

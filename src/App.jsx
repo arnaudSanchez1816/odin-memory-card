@@ -6,6 +6,7 @@ import { sleep } from "./utils"
 import { createGame } from "./game"
 import StartView from "./components/views/StartView"
 import LoadingView from "./components/views/LoadingView"
+import Footer from "./components/Footer"
 
 let loadPromise = null
 if (typeof window !== "undefined") {
@@ -39,6 +40,7 @@ function App() {
         return (
             <div className="app">
                 <LoadingView />
+                <Footer />
             </div>
         )
     }
@@ -52,6 +54,7 @@ function App() {
                         setGame(createGame(options))
                     }}
                 />
+                <Footer />
             </div>
         )
     }
@@ -66,6 +69,7 @@ function App() {
                     onGoHomeClicked={onGoHomeClicked}
                     onNewGameClicked={onNewGameClicked}
                 />
+                <Footer />
             </div>
         </>
     )

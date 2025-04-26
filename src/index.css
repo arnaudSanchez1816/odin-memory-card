@@ -58,6 +58,7 @@ body {
     font-family: var(--sans-serif-font);
     color: var(--color-grey-1);
     cursor: var(--cursor-normal);
+    background-color: var(--color-hextech-black);
 }
 
 button,
