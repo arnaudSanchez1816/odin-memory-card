@@ -21,7 +21,7 @@ function GameOverModal({ isOpen, game, onNewGameClicked, onGoHomeClicked }) {
 
     return (
         <dialog ref={modalRef} className="game-over-modal">
-            <p>
+            <div className="game-over-text">
                 {gameWon ? (
                     <>
                         <span>Congratulations !</span>
@@ -39,19 +39,19 @@ function GameOverModal({ isOpen, game, onNewGameClicked, onGoHomeClicked }) {
                         </div>
                     </>
                 )}
-            </p>
+            </div>
 
             <div className="game-over-controls">
                 <button
                     type="button"
-                    className="new-game-btn button is-primary"
+                    className="new-game-btn button is-secondary"
                     onClick={onNewGameClicked}
                 >
                     New game
                 </button>
                 <button
                     type="button"
-                    className="home-btn button is-primary"
+                    className="home-btn button is-secondary"
                     onClick={onGoHomeClicked}
                 >
                     Home
@@ -62,7 +62,7 @@ function GameOverModal({ isOpen, game, onNewGameClicked, onGoHomeClicked }) {
 }
 
 function GameView({ game, setGame, onGoHomeClicked, onNewGameClicked }) {
-    const nbChampionsPerRound = 5
+    const nbChampionsPerRound = game.options.championsPerRound
 
     const [flipped, setFlipped] = useState(true)
     const [displayedChampions, setDisplayedChampions] = useState(

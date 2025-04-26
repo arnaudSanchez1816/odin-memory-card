@@ -52,7 +52,7 @@ function ChampionCard({ id, championName, spriteName, isFlipped, onClicked }) {
                     <picture>
                         <source
                             srcSet={getChampionImagePath(imageName)}
-                            media="(min-width: 1100px)"
+                            media="(min-width: 1160px)"
                         />
                         <img
                             className="champion-img"

@@ -1,25 +1,24 @@
 .cards-container {
     display: grid;
-    grid-template-columns: auto;
     grid-auto-rows: min-content;
     justify-items: center;
-    justify-content: space-between;
-    gap: 1rem;
+    justify-content: center;
     width: 100%;
+
+    --grid-layout-gap: 1rem;
+    grid-gap: var(--grid-layout-gap);
 }
 
 .game-details {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-bottom: 1rem;
     width: 100%;
     position: relative;
-
     & > .back-home-btn {
-        position: absolute;
-        right: 0;
+        margin-bottom: 1rem;
     }
 }
 
@@ -42,7 +41,7 @@
         background-color: rgba(0 0 0 / 0.5);
     }
 
-    & > p {
+    & > .game-over-text {
         font-size: 1.25rem;
         display: flex;
         flex-direction: column;
@@ -63,12 +62,44 @@
 @media (min-width: 600px) {
     .cards-container {
         grid-template-columns: repeat(auto-fit, 254px);
+
+        /**
+        * User input values.
+        */
+        --grid-column-count: 3;
+        --grid-item--min-width: 254px;
+
+        /**
+        * Calculated values.
+        */
+        --gap-count: calc(var(--grid-column-count) - 1);
+        --total-gap-width: calc(var(--gap-count) * var(--grid-layout-gap));
+        --grid-item--max-width: calc(
+            (100% - var(--total-gap-width)) / var(--grid-column-count)
+        );
+
+        grid-template-columns: repeat(
+            auto-fill,
+            minmax(
+                max(var(--grid-item--min-width), var(--grid-item--max-width)),
+                1fr
+            )
+        );
     }
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1160px) {
+    .game-details {
+        flex-direction: row;
+        & > .back-home-btn {
+            position: absolute;
+            right: 0;
+        }
+    }
+
     .cards-container {
         align-items: center;
         grid-template-columns: repeat(auto-fit, calc(308px / 1.5));
+        justify-content: space-between;
     }
 }

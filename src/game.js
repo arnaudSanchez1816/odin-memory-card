@@ -3,7 +3,7 @@ import { randomRange, shuffle } from "./utils"
 
 let gameIdCounter = 0
 
-const GAME_DEFAULT_OPTIONS = {
+export const GAME_DEFAULT_OPTIONS = {
     totalChampions: 10,
     championsPerRound: 5,
     useAlternateSkins: true,

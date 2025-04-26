@@ -33,10 +33,14 @@
     --color-hextech-black: rgb(1, 10, 19);
     --color-gold-1: rgb(240, 230, 210);
     --color-gold-2: rgb(200, 170, 110);
+    --color-gold-4: rgb(200, 155, 60);
     --color-gold-5: rgb(120, 90, 40);
+    --color-blue-5: rgb(10, 50, 60);
     --color-blue-7: rgb(10, 20, 40);
     --color-grey-1: rgb(160, 155, 140);
     --color-grey-2: rgb(60, 60, 65);
+    --color-grey-cool: rgb(30, 40, 45);
+    --color-red: #ec2041;
 
     --gradient-gold: linear-gradient(#785a28, #c89b3c);
     --gradient-blue: linear-gradient(to top, #005a82, #0ac8b9);

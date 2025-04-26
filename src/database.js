@@ -49,3 +49,7 @@ export function getChampionImageName(champion, skinIndex) {
 
     return `${champion.id}_${skins[skinIndex].num}.jpg`
 }
+
+export function totalChampionsInDatabase() {
+    return championsDatabase.length
+}

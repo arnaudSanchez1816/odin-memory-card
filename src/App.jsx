@@ -48,8 +48,8 @@ function App() {
         return (
             <div className="app">
                 <StartView
-                    onGameStart={() => {
-                        setGame(createGame({ useAlternateSkins: false }))
+                    onGameStart={(options) => {
+                        setGame(createGame(options))
                     }}
                 />
             </div>
